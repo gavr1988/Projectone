@@ -119,7 +119,38 @@ if features_duplicates > 0:  # Fixed - was sales_duplicates
     print("Yes, there are duplicates in features_data")
 else:
     print("No duplicates in features_data")
-    
+#No duplicates were found in any data frame
+
+#Merging and concatenating the data frames into a single data frame
+
+df = sales_data.merge(stores_data, on='Store', how='left')
+df= df.merge(features_data, on=['Store', 'Date'], how='left')
+
+print (df.head())
+
+#checking columns
+print ("n===Types of Columns in merged data frame ===")
+print (df.columns.tolist())
+#checking values counts per column
+print("\n=== Value counts per column ===")
+print(df.info())
+#there is two IsHoliday columns (X and Y) and AI has told me that these are the same column but pandas has issued an x and y to differentiate them. I will drop one of them.
+#I have consulted AI for assistance with this
+
+print("\n=== Merging IsHoliday columns ===")
+
+if 'IsHoliday_x' in df.columns and 'IsHoliday_y' in df.columns:
+    # Keep one IsHoliday column
+    df['IsHoliday'] = df['IsHoliday_x']
+df = df.drop(['IsHoliday_x', 'IsHoliday_y'], axis=1)
+
+#checking if it worked
+print (df.columns.tolist())
+print(df.info())
+
+print (df.head())
+
+
 
 
 
