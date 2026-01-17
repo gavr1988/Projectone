@@ -180,3 +180,19 @@ print(df.columns.tolist())
 
 print (df.head())
 
+#calculating the difference between Weeklysales in Non-Holiday and Holiday weeks
+# 
+# #creating two data frames one for holiday weeks and one for non-holiday weeks
+
+holiday_average_sales = df[df['IsHoliday'] == True]['Weekly_Sales'].mean()
+
+non_holiday_average_sales = df[df['IsHoliday'] == False]['Weekly_Sales'].mean()
+
+sales_difference = holiday_average_sales - non_holiday_average_sales
+
+print ("====Sales Analysis between Holiday and Non-Holiday Weeks====")
+
+print("Average sales during holidays:", holiday_average_sales)
+print("Average sales during non-holidays:", non_holiday_average_sales)
+print("Difference:", sales_difference)
+
