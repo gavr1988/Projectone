@@ -148,9 +148,35 @@ df = df.drop(['IsHoliday_x', 'IsHoliday_y'], axis=1)
 print (df.columns.tolist())
 print(df.info())
 
+print (df.head())
 
+#calculating total markdowns
 
+#create a new column for total markdowns
 
+df['Total_MarkDown'] = df['MarkDown1'] + df['MarkDown2'] + df['MarkDown3'] + df['MarkDown4'] + df['MarkDown5']
 
+print (df.head())
 
+#I have now consulted AI to find out how to move the Total_Markdown column next to the MarkDowns
+
+# Get current column order
+cols = df.columns.tolist()
+
+# Find the position after MarkDown5
+markdown5_index = cols.index('MarkDown5')
+
+# Remove Total_MarkDown from wherever it is
+cols.remove('Total_MarkDown')
+
+# Insert it right after MarkDown5
+cols.insert(markdown5_index + 1, 'Total_MarkDown')
+
+# Reorder the DataFrame
+df = df[cols]
+
+print("Columns reordered!")
+print(df.columns.tolist())
+
+print (df.head())
 
