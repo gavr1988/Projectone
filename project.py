@@ -61,7 +61,7 @@ features_data['MarkDown2'].fillna(avg_markdown2, inplace=True)
 avg_markdown3 = features_data ['MarkDown3'].mean()
 features_data['MarkDown3'].fillna(avg_markdown3, inplace=True)
 
-avg_markdown4= features_data ['MarkDown2'].mean()
+avg_markdown4= features_data ['MarkDown4'].mean()
 features_data['MarkDown4'].fillna(avg_markdown4, inplace=True)
 
 avg_markdown5= features_data ['MarkDown5'].mean()
@@ -148,7 +148,7 @@ df = df.drop(['IsHoliday_x', 'IsHoliday_y'], axis=1)
 print (df.columns.tolist())
 print(df.info())
 
-print (df.head())
+
 
 
 
