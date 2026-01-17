@@ -96,3 +96,30 @@ print(sales_data.info())
 print("Converting date column in features_data to datetime object")
 features_data['Date'] = pd.to_datetime(features_data['Date'], dayfirst=True)
 print(features_data.info())
+
+#now to check for duplicates in the data frames
+
+print("Checking for duplicates in sales_data:")
+sales_duplicates = sales_data.duplicated().sum()
+if sales_duplicates > 0:
+    print("Yes, there are duplicates in sales_data")
+else:
+    print("No duplicates in sales_data")
+
+print("Checking for duplicates in stores_data:")
+stores_duplicates = stores_data.duplicated().sum()
+if stores_duplicates > 0:
+    print("Yes, there are duplicates in stores_data")
+else:
+    print("No duplicates in stores_data")
+
+print("Checking for duplicates in features_data:")
+features_duplicates = features_data.duplicated().sum()
+if features_duplicates > 0:  # Fixed - was sales_duplicates
+    print("Yes, there are duplicates in features_data")
+else:
+    print("No duplicates in features_data")
+    
+
+
+
