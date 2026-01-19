@@ -84,6 +84,11 @@ print (stores_data.isnull().sum())
 print ("Number of NaN values in features_data after cleaning")
 print (features_data.isnull().sum())
 
+
+
+
+print ("now time for transforming")
+
 #Transforming
 #There are no date values for conversion in stores data frame
 #phase one converting date to datetime object
@@ -115,7 +120,7 @@ else:
 
 print("Checking for duplicates in features_data:")
 features_duplicates = features_data.duplicated().sum()
-if features_duplicates > 0:  # Fixed - was sales_duplicates
+if features_duplicates > 0:
     print("Yes, there are duplicates in features_data")
 else:
     print("No duplicates in features_data")
@@ -179,6 +184,10 @@ print("Columns reordered!")
 print(df.columns.tolist())
 
 print (df.head())
+
+#Analysis time
+
+print ("-----Analysis time-----")
 
 #calculating the difference between Weeklysales in Non-Holiday and Holiday weeks
 # 
