@@ -1,13 +1,15 @@
 import numpy as np
 import pandas as pd
 
+#you will need to have the three visualisation software
+
 #importing the csv files into data frames
 
-sales_data = pd.read_csv('sales data-set.csv')
+sales_data = pd.read_csv('DATA/sales data-set.csv')
 
-stores_data = pd.read_csv('stores data-set.csv')
+stores_data = pd.read_csv('DATA/stores data-set.csv')
 
-features_data = pd.read_csv('Features data set.csv')
+features_data = pd.read_csv('DATA/Features data set.csv')
 
 #checking input csv files worked
 
@@ -23,7 +25,7 @@ print ("information about data frame sales_data:")
 #getting a technical summary of the data frame
 print (sales_data.info())
 
-#Cleaning the data
+#Cleaning the data - can i make this a function?
 
 #Checking for NaN values in data frames
 
