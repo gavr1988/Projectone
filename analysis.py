@@ -1,10 +1,15 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 from data_cleaning import load_and_clean_data
 
 # LOAD AND CLEAN DATA
 print("\nLOADING AND CLEANING DATA")
 sales_data, stores_data, features_data = load_and_clean_data()
 
-# Quick verification
+# Check data
 print("\nNaN values in features_data after cleaning:")
 print(features_data.isnull().sum())
 
@@ -54,6 +59,30 @@ merged_data.to_csv('DATA/cleaned_merged_data.csv', index=False)
 print("✓ Cleaned and merged data exported to 'DATA/cleaned_merged_data.csv'")
 
 # ANALYSIS
+#Store type analysis
+
+#Which store type performs the bests
+
+total_sales_by_type = merged_data.groupby('Type')['Weekly_Sales'].sum()
+print ("total sales by store type:")
+print(total_sales_by_type)
+
+total_sales_by_type_sorted = merged_data.groupby('Type')['Weekly_Sales'].sum().sort_values(ascending=False)
+print("\nTotal Sales by Store Type (sorted):")
+
+print(total_sales_by_type_sorted)
+
+# Create a bar chart of this data
+
+
+plt.figure(figsize=(10, 6))
+total_sales_by_type_sorted.plot(kind='bar', color=['#1f77b4', '#ff7f0e', '#2ca02c'])
+plt.title('Total Sales by Store Type', fontsize=16, fontweight='bold')
+plt.xlabel('Store Type', fontsize=12)
+plt.ylabel('Total Sales ($)', fontsize=12)
+plt.xticks(rotation=0)
+plt.grid(axis='y', alpha=0.3)
+
 print("\nANALYSIS: HOLIDAY VS NON-HOLIDAY SALES")
 
 holiday_average_sales = merged_data[merged_data['IsHoliday'] == True]['Weekly_Sales'].mean()
@@ -70,3 +99,4 @@ if sales_difference > 0:
 else:
     percentage_decrease = abs(sales_difference / non_holiday_average_sales) * 100
     print(f"Holiday weeks have {percentage_decrease:.1f}% lower sales")
+#now looking into what stores perfom best during holiday weeks
